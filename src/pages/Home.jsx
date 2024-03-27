@@ -29,7 +29,7 @@ const Home = () => {
         </li>
         <li style={{ marginBottom: "10px" }}>
           <Link to="/propertydetails" style={{ color: "#87CEFA", textDecoration: "none" }}>
-            PropertyDetails
+            ListingMapView
           </Link>
         </li>
         <li style={{ marginBottom: "10px" }}>

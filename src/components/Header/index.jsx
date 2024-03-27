@@ -1,6 +1,7 @@
 import React from "react";
 import { CloseSVG } from "../../assets/images";
 import { Button, Input, Img, Heading, Text } from "./..";
+import { Link } from "react-router-dom";
 
 export default function Header({ ...props }) {
   const [searchBarValue1, setSearchBarValue1] = React.useState("");
@@ -17,11 +18,15 @@ export default function Header({ ...props }) {
         <div className="flex flex-row sm:flex-col justify-between items-center w-[41%] md:w-full sm:gap-10">
           <div className="flex flex-row w-[64%] sm:w-full gap-10">
             <div className="flex flex-row justify-start items-start w-[25%] gap-1.5">
-              <Heading as="h6">Home</Heading>
+              <Link to="/">
+                <Heading as="h6">Home</Heading>
+              </Link>
               <Img src="images/img_arrow_down.svg" alt="home_two" className="h-[16px] w-[16px] mt-0.5" />
             </div>
             <div className="flex flex-row justify-start items-start w-[25%] gap-1.5">
-              <Heading as="h6">Listing</Heading>
+              <Link to="/listing">
+                <Heading as="h6">Listing</Heading>
+              </Link>
               <Img src="images/img_arrow_down.svg" alt="arrowdown_one" className="h-[16px] w-[16px]" />
             </div>
             <div className="flex flex-row justify-start items-start w-[25%] gap-1.5">
@@ -29,10 +34,12 @@ export default function Header({ ...props }) {
               <Img src="images/img_arrow_down.svg" alt="arrowdown_one" className="h-[16px] w-[16px]" />
             </div>
           </div>
-          <Heading as="h6" className="text-center">
-            Property{" "}
-          </Heading>
-          <Heading as="h6">Blog</Heading>
+          <Link to="/contactpage">
+            <Heading as="h6" className="text-center">
+              Contact Us{" "}
+            </Heading>
+          </Link>
+          {/* <Heading as="h6">Contact Us</Heading> */}
         </div>
         <div className="flex flex-row justify-start items-center w-[19%] md:w-full gap-2.5">
           <Input
