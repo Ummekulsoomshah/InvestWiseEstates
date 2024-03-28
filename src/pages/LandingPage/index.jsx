@@ -1,11 +1,23 @@
 import React from "react";
+import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Heading, Img, Text, Button, Input } from "../../components";
 import Header from "../../components/Header";
 import LandingPageCard from "../../components/LandingPageCard";
 import { TabPanel, TabList, Tab, Tabs } from "react-tabs";
 import { Link } from "react-router-dom";
+import { fetchApi, baseUrl } from "../../../Utils/fettchApi";
 export default function LandingPagePage() {
+  const [data, setData] = React.useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`);
+      console.log(result.hits);
+      setData(result.hits);
+    }
+    fetchData();
+
+  }, [])
   return (
     <>
       <Link to={LandingPagePage}>
@@ -242,27 +254,11 @@ export default function LandingPagePage() {
                 </div>
               </div>
               <div className="justify-center w-full gap-6 grid-cols-3 md:grid-cols-2 md:gap-5 sm:grid-cols-1 grid">
-                <LandingPageCard className="flex flex-col items-center justify-start w-full" />
-                <LandingPageCard
-                  imageOne="images/img_image_1.png"
-                  className="flex flex-col items-center justify-start w-full"
-                />
-                <LandingPageCard
-                  imageOne="images/img_image_2.png"
-                  className="flex flex-col items-center justify-start w-full"
-                />
-                <LandingPageCard
-                  imageOne="images/img_image_3.png"
-                  className="flex flex-col items-center justify-start w-full"
-                />
-                <LandingPageCard
-                  imageOne="images/img_image_4.png"
-                  className="flex flex-col items-center justify-start w-full"
-                />
-                <LandingPageCard
-                  imageOne="images/img_image_5.png"
-                  className="flex flex-col items-center justify-start w-full"
-                />
+                {data.map((item, index) => (
+                  <LandingPageCard key={index} {...item} />
+                  ))
+                  // console.log(item)
+                }
               </div>
             </div>
           </div>

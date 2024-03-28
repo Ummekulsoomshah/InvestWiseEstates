@@ -2,20 +2,21 @@ import React from "react";
 import { Heading, Button, Img } from "./..";
 
 export default function LandingPageCard({
-  imageOne = "images/img_image_260x384.png",
-  p286162ndave = "2861 62nd Ave, Oakland, CA 94605",
-  p3bedroom = "3 Bed Room",
-  bathcounter = "1 Bath",
-  sqftcounter = "1,032 sqft",
+  // imageOne = "images/img_image_260x384.png",
+  // p286162ndave = "2861 62nd Ave, Oakland, CA 94605",
+  // p3bedroom = "3 Bed Room",
+  // bathcounter = "1 Bath",
+  // sqftcounter = "1,032 sqft",
   p1bath = "Family",
   viewDetails = "View Details",
-  price = "$649,900",
+  // price = "$649,900",
   ...props
 }) {
+  console.log("props",props);
   return (
     <div {...props}>
       <Img
-        src={imageOne}
+        src={props.coverPhoto.url}
         alt="image_one"
         className="w-full md:h-auto sm:w-full rounded-tr-[10px] rounded-tl-[10px] object-cover"
       />
@@ -23,20 +24,29 @@ export default function LandingPageCard({
         <div className="flex flex-col items-center justify-start w-full gap-[25px] my-2.5 md:px-5 max-w-[344px]">
           <div className="flex flex-row justify-start items-center w-full gap-3">
             <Img src="images/img_icon_map_2.svg" alt="image_two" className="h-[24px] w-[24px]" />
-            <Heading as="h1">{p286162ndave}</Heading>
+            <Heading as="h1">{props.agency.name_12}</Heading>
           </div>
+          {/* <div style={{ flex:"wrap",flexWrap:"wrap"}}>
+
+          {props.keywords.map((item) => (
+            <span className="myflex" key={item}>
+              
+              <Heading as="h1">{item}</Heading>
+            </span>
+          ))}
+          </div> */}
           <div className="flex flex-col items-center justify-start w-full gap-[19px]">
             <div className="flex flex-row justify-between w-full">
               <div className="flex flex-row justify-start items-center gap-3">
                 <Img src="images/img_icon_gray_700.svg" alt="3_bed_room_one" className="h-[20px] w-[20px]" />
                 <Heading as="h2" className="!text-gray-700">
-                  {p3bedroom}
+                  {props.rooms}
                 </Heading>
               </div>
               <div className="flex flex-row justify-start items-center gap-3">
                 <Img src="images/img_icon_gray_700_20x20.svg" alt="1_bath_one" className="h-[20px] w-[20px]" />
                 <Heading as="h3" className="!text-gray-700">
-                  {bathcounter}
+                  {props.baths}
                 </Heading>
               </div>
             </div>
@@ -44,7 +54,7 @@ export default function LandingPageCard({
               <div className="flex flex-row justify-start items-center gap-3">
                 <Img src="images/img_icon_20x20.svg" alt="1032_sqft_one" className="h-[20px] w-[20px]" />
                 <Heading as="h4" className="!text-gray-700">
-                  {sqftcounter}
+                  {props.area}
                 </Heading>
               </div>
               <div className="flex flex-row justify-start items-center gap-3">
@@ -60,7 +70,7 @@ export default function LandingPageCard({
               {viewDetails}
             </Button>
             <Heading size="xl" as="h6" className="tracking-[-0.48px]">
-              {price}
+              {props.price}
             </Heading>
           </div>
         </div>
